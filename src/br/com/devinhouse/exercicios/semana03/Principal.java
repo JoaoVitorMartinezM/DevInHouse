@@ -8,11 +8,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.*;
 
 import javax.sound.sampled.SourceDataLine;
+import javax.swing.JOptionPane;
 
 public class Principal {
     /**
@@ -47,16 +50,39 @@ public class Principal {
 
             int n = 0;
             for (int i = 2; i < fatiamento.length; i++) {
-                System.out.print(fatiamento[i] + " ");
                 sorteados[n] = Integer.parseInt(fatiamento[i]);
                 n++;
 
             }
+            // Exec06 -> Apenas ordenando a lista antes de instanciar o objeto.
+            Arrays.sort(sorteados);
+           
             Concursos.add(new Concurso(Integer.parseInt(fatiamento[0]),data,sorteados));
 
 
         }
-        System.out.println(Concursos.toString());
+        // Concursos.sort((o, o2 )-> o.compareTo(o2));
+        // List<String> lista2 = new ArrayList<String>();
+        
+        // System.out.println(Concursos.toString());
+        
+        
 
+        //Exec08
+        String search = JOptionPane.showInputDialog("Digite uma data (Ano-Mês-Dia) para realizar a busca nos sorteios da Megasena: ");
+        Boolean match = false;
+        for (int i = 0; i < Concursos.size(); i++) {
+            match = Concursos.get(i).getData().toString().equalsIgnoreCase(search); 
+            if (match) {
+                System.out.println(Concursos.get(i) + " Acheiii");
+                break;
+                
+            }
+        }
+        if (!match) {
+        System.out.println("Não houve sorteio na data pesquisada.");
+        }
     }
+
+    
 }

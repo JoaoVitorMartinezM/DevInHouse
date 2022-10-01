@@ -49,4 +49,6 @@ public class Concurso {
                 ", sorteados=" + Arrays.toString(sorteados) +
                 '}';
     }
+
+    
 }
