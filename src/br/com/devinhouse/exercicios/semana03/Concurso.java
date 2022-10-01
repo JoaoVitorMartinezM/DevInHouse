@@ -4,24 +4,24 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 public class Concurso {
-    private Integer numero;
+    private int numero;
     private LocalDate data;
     private int[] sorteados;
 
     public Concurso() {
     }
 
-    public Concurso(Integer numero, LocalDate data, int[] sorteados) {
+    public Concurso(int numero, LocalDate data, int[] sorteados) {
         this.numero = numero;
         this.data = data;
         this.sorteados = sorteados;
     }
 
-    public Integer getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
