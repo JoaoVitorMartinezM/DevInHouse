@@ -7,12 +7,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.*;
 
 import javax.sound.sampled.SourceDataLine;
@@ -82,6 +85,8 @@ public class Principal {
         // System.out.println("Não houve sorteio na data pesquisada.");
         // }
 
+        
+        //Exec09
         String kick = JOptionPane.showInputDialog("Digite seu chute de 6 numeros separados por espaço (1 2 3 4 5 6): ");
         String[] NumerosUsuario = kick.split(" ");
         int[] NumerosUsuarioConvertido = new int[6];
@@ -108,6 +113,73 @@ public class Principal {
         if (!match) {
             System.out.println("Esta sequência de números ainda não foi sorteada");
         }
+
+        // Exercicio 10
+    
+        // criando e populando Map de nros sorteados e respectivas quantidade em que foram sorteados
+        Map<Integer, Integer> map = new HashMap<>();
+        for (Concurso concurso: Concursos) {
+            for (int i = 0; i < sorteados.length; i++) {
+                int nro = sorteados[i];
+                int qtdAtual = map.getOrDefault(nro, 0);
+                map.put(nro, qtdAtual + 1);
+            }
+        }
+        // calculado as maiores e menores quantidades
+        int nroMaisFrequente = 1;
+        int nroMenosFrequente = 1;
+        int qtdMaisFrequente = 0;
+        int qtdMenosFrequente = Integer.MAX_VALUE;
+
+        for(Integer nro: map.keySet()) {
+            Integer qtd = map.get(nro);
+            if (qtd > qtdMaisFrequente) {
+                qtdMaisFrequente = qtd;
+                nroMaisFrequente = nro;
+            }
+            if (qtd < qtdMenosFrequente) {
+                qtdMenosFrequente = qtd;
+                nroMenosFrequente = nro;
+            }
+        
+
+       
+    }
+    System.out.println("Número mais frequente = " + nroMaisFrequente);
+    System.out.println("Número menos frequente = " + nroMenosFrequente);
+
+    // Exercicio 11 - nro mais atrasado - mais tempo ser ter sido sorteado
+    
+        // criando e populando map de nros sorteados e respectivas ultima data em que foram sorteados (data mais recente de sorteio)
+        Map<Integer, LocalDate> maps = new HashMap<>();
+        for (Concurso concurso: Concursos) {
+            for (int i = 0; i < sorteados.length; i++) {
+                int nro = sorteados[i];
+                if (map.containsKey(nro)) {
+                    
+                    LocalDate dataUltSorteio = maps.get(nro);
+                    if (concurso.getData().isAfter(dataUltSorteio)) {
+                        maps.put(nro, concurso.getData());
+                    }
+                } else {
+                    maps.put(nro, concurso.getData());
+                }
+            }
+        
+
+        LocalDate dataMaisAntiga = LocalDate.now();
+        int nroMaisAtrasado = 0;
+        for(Integer nro: map.keySet()) {
+            LocalDate data = maps.get(nro);
+            if (data.isBefore(dataMaisAntiga)) {
+                dataMaisAntiga = data;
+                nroMaisAtrasado = nro;
+            }
+        }
+        System.out.println("Mais atrasado: " + nroMaisAtrasado);
+           // 24
+    }
+    
 
     }
 

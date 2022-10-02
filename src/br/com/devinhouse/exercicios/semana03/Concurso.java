@@ -26,7 +26,7 @@ public class Concurso {
     }
 
     public LocalDate getData() {
-        return data;
+        return this.data;
     }
 
     public void setData(LocalDate data) {
@@ -49,6 +49,7 @@ public class Concurso {
                 ", sorteados=" + Arrays.toString(sorteados) +
                 '}';
     }
+    
 
     
 }
