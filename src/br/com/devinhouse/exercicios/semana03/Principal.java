@@ -28,18 +28,18 @@ public class Principal {
      */
     public static void main(String[] args) throws IOException, NumberFormatException {
         // Exec 01
-        Funcionario joao = new Funcionario("10662222222", "Joao", 1000.0F);
+//         Funcionario joao = new Funcionario("10662222222", "Joao", 1000.0F);
 
-        joao.promover(0.1F);
+//         joao.promover(0.1F);
 
-        System.out.println(joao.salario);
+//         System.out.println(joao.salario);
 
-        // Exec 03
-        Contador.contarPalavras("Testando método estático da classe 'Contador' que conta o número de palavras");
+//         // Exec 03
+//         Contador.contarPalavras("Testando método estático da classe 'Contador' que conta o número de palavras");
 
-        // Exec 04
-        Contador2 contador2 = new Contador2("Frase para o contador de palavras");
-        contador2.contarPalavras();
+//         // Exec 04
+//         Contador2 contador2 = new Contador2("Frase para o contador de palavras");
+//         contador2.contarPalavras();
 
         // Exec 05
         final Path PathArquivo = Paths.get("src/br/com/devinhouse/exercicios/semana03/megasena.txt");
@@ -64,26 +64,25 @@ public class Principal {
             Concursos.add(new Concurso(Integer.parseInt(fatiamento[0]), data, sorteados));
 
         }
-        // Concursos.sort((o, o2 )-> o.compareTo(o2));
-        // List<String> lista2 = new ArrayList<String>();
+       
+        List<String> lista2 = new ArrayList<String>();
 
-        // System.out.println(Concursos.toString());
+        System.out.println(Concursos.toString());
 
-        // Exec08
-        // String search = JOptionPane.showInputDialog("Digite uma data (Ano-Mês-Dia)
-        // para realizar a busca nos sorteios da Megasena: ");
+        //Exec08
+        String search = JOptionPane.showInputDialog("Digite uma data (Ano-Mês-Dia) para realizar a busca nos sorteios da Megasena: ");
         Boolean match = false;
-        // for (int i = 0; i < Concursos.size(); i++) {
-        // match = Concursos.get(i).getData().toString().equalsIgnoreCase(search);
-        // if (match) {
-        // System.out.println(Concursos.get(i) + " Acheiii");
-        // break;
+        for (int i = 0; i < Concursos.size(); i++) {
+        match = Concursos.get(i).getData().toString().equalsIgnoreCase(search);
+        if (match) {
+        System.out.println(Concursos.get(i) + " Acheiii");
+        break;
 
-        // }
-        // }
-        // if (!match) {
-        // System.out.println("Não houve sorteio na data pesquisada.");
-        // }
+        }
+        }
+        if (!match) {
+        System.out.println("Não houve sorteio na data pesquisada.");
+        }
 
         
         //Exec09
@@ -177,10 +176,16 @@ public class Principal {
             }
         }
         System.out.println("Mais atrasado: " + nroMaisAtrasado);
-           // 24
+           
     }
+
+    // Exec 07
+    // Collections.sort(Concursos);
+    // for(Concurso concurso: Concursos){
+    //     System.out.println(concurso);
+    // }
     
 
-    }
+    // }
 
 }
